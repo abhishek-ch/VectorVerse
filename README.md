@@ -29,6 +29,14 @@ Current LLM Models Support
 3. GPT4All
 4. LLama
 
+## 🌵 Environment Setup
+
+Create a config.ini file (template provided as config_template.ini) and update the following
+
+MODEL_TYPE: supports LlamaCpp or GPT4All
+MODEL_PATH: Path to your GPT4All or LlamaCpp supported LLM
+EMBEDDINGS_MODEL_NAME: SentenceTransformers embeddings model name (see https://www.sbert.net/docs/pretrained_models.html)
+
 
 ## 💾 Installation
 
