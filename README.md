@@ -12,6 +12,7 @@ https://github.com/abhishek-ch/VectorVerse/assets/7579608/40d419e1-4834-447b-b7c
 ## Key Features 🎯
 * __Multiple Vector Databases__: VectorVerse let you explore multiple Vector Databases are compare/observe the result.
 * __LLM Model__: VectorVerse allows you to explore multiple LLM models output like GPT3, GPT4, GPT4All etc.
+* Chat History is maintained using __sqlite__
 
 ## Current Support
 
@@ -83,3 +84,7 @@ docker compose up
 ```python
 python -m verse
 ```
+
+## References
+1. Powered by Langchain
+2. Uploader Inspired by Quivr
