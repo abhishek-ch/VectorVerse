@@ -13,6 +13,22 @@ https://github.com/abhishek-ch/VectorVerse/assets/7579608/40d419e1-4834-447b-b7c
 * __Multiple Vector Databases__: VectorVerse let you explore multiple Vector Databases are compare/observe the result.
 * __LLM Model__: VectorVerse allows you to explore multiple LLM models output like GPT3, GPT4, GPT4All etc.
 
+## Current Support
+
+### Vector Databases Support
+1. [Qdrant](https://qdrant.tech/)
+2. [Chroma DB](https://www.trychroma.com/)
+3. [Elasticsearch](https://vector.dev/docs/reference/configuration/sinks/elasticsearch/)
+4. [Redis](https://redis.io/docs/stack/search/reference/vectors/)
+5. [FAISS](https://engineering.fb.com/2017/03/29/data-infrastructure/faiss-a-library-for-efficient-similarity-search/)
+
+Current LLM Models Support
+1. GPT3
+2. GPT4
+3. GPT4All
+4. LLama
+
+
 ## 💾 Installation
 
 ### Docker

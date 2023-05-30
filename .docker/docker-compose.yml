@@ -1,0 +1,49 @@
+version: '3.8'
+services:
+#   postgres:
+#     build:
+#       context: .
+#       dockerfile: pg-Dockerfile
+#     ports:
+#       - "5432:5432"
+#     environment:
+#       POSTGRES_USER: postgres
+#       POSTGRES_PASSWORD: xsIKk1_lloP
+#       POSTGRES_DB: thepgvector
+
+  # weaviate:
+  #   image: semitechnologies/weaviate:1.19.6
+  #   ports:
+  #   - 8080:8080
+  #   restart: on-failure:0
+  #   environment:
+  #     QUERY_DEFAULTS_LIMIT: 25
+  #     AUTHENTICATION_ANONYMOUS_ACCESS_ENABLED: 'true'
+  #     PERSISTENCE_DATA_PATH: '/var/lib/weaviate'
+  #     DEFAULT_VECTORIZER_MODULE: 'none'
+  #     CLUSTER_HOSTNAME: 'node1'
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.7.0
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  redis:
+    image: redis/redis-stack-server:latest
+    ports:
+      - "6379:6379"
+
+  # streamlit_app:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   platform: linux/amd64
+  #   ports:
+  #     - "8501:8501"
+  #   depends_on:
+  #     - redis
+  #     - elasticsearch

@@ -1,1 +1,0 @@
-docker run --name thePostgresDb -p 5432:5432 -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=xsIKk1_lloP -e POSTGRES_DB=pgvector -d postgres
