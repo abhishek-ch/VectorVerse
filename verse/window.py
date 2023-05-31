@@ -1,4 +1,6 @@
-# main.py
+from dotenv import load_dotenv
+# load_dotenv()
+
 import os
 import streamlit as st
 from verse.files import file_uploader
@@ -6,7 +8,6 @@ import sqlite3
 from verse.sqlite_helper import *
 from verse.multichat import *
 from verse.vector_explore import *
-
 
 conn = sqlite3.connect(DB_NAME, isolation_level=None)
 create_table(conn=conn)
@@ -117,16 +118,17 @@ elif user_choice == "Explore":
 
 
 if __name__ == "__main__":
+    load_dotenv()
     config_file_path = "config.ini"
     if "OPENAI_API_KEY" not in os.environ and not config_file_path:
         raise ValueError(
             "Environment variable OPENAI_API_KEY not found, you can set it in Project Settings"
         )
 
-    if not config_file_path:
-        print("*" * 100)
-        set_api_key()
-    else:
-        load_config(config_file_path)
+    # if not config_file_path:
+    #     print("*" * 100)
+    #     set_api_key()
+    # else:
+    #     load_config(config_file_path)
 
     os.environ["TOKENIZERS_PARALLELISM"] = "true"

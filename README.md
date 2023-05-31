@@ -31,12 +31,25 @@ Current LLM Models Support
 
 ## 🌵 Environment Setup
 
-Create a config.ini file (template provided as config_template.ini) and update the following
+Create a .env file (template provided as example.env) and update the following
 
-MODEL_TYPE: supports LlamaCpp or GPT4All
-MODEL_PATH: Path to your GPT4All or LlamaCpp supported LLM
-EMBEDDINGS_MODEL_NAME: SentenceTransformers embeddings model name (see https://www.sbert.net/docs/pretrained_models.html)
+Then, download the LLM model and place it in a directory of your choice:
+- LLM: default to [ggml-gpt4all-j-v1.3-groovy.bin](https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin). If you prefer a different GPT4All-J compatible model, just download it and reference it in your `.env` file.
 
+```
+openai_key=****
+endpoint_url=***
+api_type=azure
+api_version=2023-03-15-preview
+MODEL_TYPE=supports LlamaCpp or GPT4All
+LLAMA_EMBEDDINGS_MODEL=/path/to/ggml-model-q4_0.bin
+MODEL_PATH=/path/to/ggml-gpt4all-j-v1.3-groovy.bin
+db_persistent_path=is the folder you want your vectorstore in
+collection_name=examples
+pdf_uploadpath=OPTIONAL
+```
+
+Note: because of the way `langchain` loads the `SentenceTransformers` embeddings, the first time you run the script it will require internet connection to download the embeddings model itself.
 
 ## 💾 Installation
 

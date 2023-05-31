@@ -2,3 +2,5 @@
 **/obj
 **/node_modules
 .git
+.env
+config.ini
