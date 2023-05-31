@@ -81,7 +81,7 @@ Run `docker-compose up` and browse http://localhost:8501
 ## ⛄ Optional (If using OpenAI)
 Configure OpenAI Key
     * If Using OpenAI key, simply `export OPENAI_API_KEY=*****`
-    * If want to use config file, rename `config_template.ini` -> `config.ini` file inside the `database_agent` dir & update either Azure or OpenAI config
+    * If want to use config file, rename `example.env` -> `.env` file inside the `vectorverse` dir & update either Azure or OpenAI config
 
     By completing these steps, you have properly configured the API Keys for your project.
 
