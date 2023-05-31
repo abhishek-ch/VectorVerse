@@ -5,7 +5,6 @@ from langchain.docstore.document import Document
 from langchain.vectorstores import VectorStore
 from langchain.embeddings.base import Embeddings
 
-print(f"-=-----------_>>> {os.environ}")
 db_persistent_path = f"""{os.environ["db_persistent_path"]}/qdrant"""
 COLLECTION_NAME = "qdrantcoll"
 
