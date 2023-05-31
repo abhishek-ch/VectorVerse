@@ -14,18 +14,18 @@ services:
     ports:
       - "6379:6379"
 
-  streamlit_app:
-    # build:
-    #   context: .
-    #   dockerfile: Dockerfile
-    image: vectorverse:0.1
-    # platform: linux/amd64
-    environment:
-      - test=1
-    ports:
-      - "8501:8501"
-    depends_on:
-      - redis
-      - elasticsearch
-    volumes:
-      - /Users/gmcjy/Documents/sourcecode/github/gpt4all/:/gpt/
+  # streamlit_app:
+  #   # build:
+  #   #   context: .
+  #   #   dockerfile: Dockerfile
+  #   image: vectorverse:0.1
+  #   # platform: linux/amd64
+  #   environment:
+  #     - test=1
+  #   ports:
+  #     - "8501:8501"
+  #   depends_on:
+  #     - redis
+  #     - elasticsearch
+  #   volumes:
+  #     - /Users/gmcjy/Documents/sourcecode/github/gpt4all/:/gpt/
