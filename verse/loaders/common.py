@@ -71,6 +71,8 @@ def process_file(
                 "chunk_overlap": chunk_overlap,
                 "date": dateshort,
                 "file_type": file_suffix,
+                "page": doc.metadata["page"],
+                "dbsource": doc.metadata["source"]
             },
         )
         for doc in documents
