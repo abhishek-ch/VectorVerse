@@ -37,10 +37,10 @@ Then, download the LLM model and place it in a directory of your choice:
 - LLM: default to [ggml-gpt4all-j-v1.3-groovy.bin](https://gpt4all.io/models/ggml-gpt4all-j-v1.3-groovy.bin). If you prefer a different GPT4All-J compatible model, just download it and reference it in your `.env` file.
 
 ```
-openai_key=****
-endpoint_url=***
-api_type=azure
-api_version=2023-03-15-preview
+OPENAI_API_KEY=*****
+OPENAI_API_BASE=****
+OPENAI_API_TYPE=azure
+OPENAI_API_VERSION=2023-03-15-preview
 MODEL_TYPE=supports LlamaCpp or GPT4All
 LLAMA_EMBEDDINGS_MODEL=/path/to/ggml-model-q4_0.bin
 MODEL_PATH=/path/to/ggml-gpt4all-j-v1.3-groovy.bin
