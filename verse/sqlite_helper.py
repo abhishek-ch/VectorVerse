@@ -40,7 +40,6 @@ def fetch_history(conn: Connection, model: str) -> list[Any]:
 def insert_chathistory(
     conn: Connection, model: str, question: str, answer: str, source: str
 ) -> None:
-    print("Inserting")
     tz = pytz.timezone("Europe/Berlin")
     command = """INSERT INTO chathistory(qsha,model,question,answer,source, eventtime) VALUES (?, ?, ?, ?, ?, ?)"""
     cur = conn.cursor()

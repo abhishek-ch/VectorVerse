@@ -22,3 +22,6 @@ redis==4.5.5
 gpt4all
 llama-cpp-python==0.1.50
 python-dotenv==1.0.0
+transformers==4.29.2
+huggingface_hub==0.14.1
+xformer

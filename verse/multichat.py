@@ -1,6 +1,6 @@
 from typing import List
 import streamlit as st
-from verse.llm import *
+from verse.models.llm import *
 from streamlit.delta_generator import DeltaGenerator
 from langchain.chains import RetrievalQA
 from verse.vectordb import *
@@ -10,8 +10,9 @@ from langchain.schema import BaseRetriever
 from sqlite_helper import *
 from verse.vectordb_action import search_from_vectordb
 from verse.prompt import PROMPT
+from verse.models import helper
 
-models = ["gpt-3.5-turbo", "gpt-4-0314", "GPT4All", "LlamaCpp"]
+models = helper.models
 
 
 def multichat_ui(conn: Connection, vectordbs: list[str]) -> None:
@@ -87,7 +88,7 @@ def update_chat(model: str, records: List[Any]):
                     )
                     message("", key=str(row[0]) + f"_{model}", avatar_style="bottts")
                     st.markdown(row[4])
-                    st.caption(f""":link: _{row[5]}_ :clock1: {row[6]} """)
+                    st.caption(f""":link: {row[5]} :clock1: {row[6]} """)
         except st.errors.DuplicateWidgetID:
             # A Hack when you search while keeping the tab active, recent response goes to the end,
             # once refresh ut reset back to the top.
@@ -113,17 +114,25 @@ def update_chat_window(
     # ConversationalRetrievalChain.from_llm(llm=llm, retriever =retriever, chain_type="stuff", return_source_documents=True)
     result = qa({"query": query})
     answer, sources = result["result"], result["source_documents"]
-    src = []
+    src = {}
     for document in sources:
         doc_source = document.metadata["file_name"]
-        src.append(doc_source)
-
+        page = document.metadata["page"]
+        if doc_source in src:
+            src[doc_source].append(str(page))
+        else:
+            src[doc_source] = [str(page)]
+    src_result = ""
+    for key, values in src.items():
+        unique_values = ' '.join(set(values))
+        src_result += f" _{key}_ __Page: {unique_values}__"
+        src_result += "| "
     insert_chathistory(
         conn=conn,
         model=curr_model,
         question=query,
         answer=answer,
-        source=", ".join(list(set(src))),
+        source=src_result,
     )
     update_chat(model=curr_model, records=fetch_history(conn=conn, model=curr_model))
 
@@ -132,7 +141,6 @@ def execute_model(
     conn: Connection, query: str, model: str, tab: DeltaGenerator
 ) -> None:
     vectorDB = search_from_vectordb(st.session_state["chatvectordb"])
-    print(f" ***The selected Vector DB is*** {vectorDB}")
     retriever = vectorDB.as_retriever()
     with tab:
         with st.container():
